@@ -23,9 +23,14 @@ const std::size_t MAX_COLOR_VALUE = 65'536;         /// Max ppm color value
 // -----------------------------------------------------------------------------
 
 /// @brief PPM image struct
-struct PPM {
+class PPM {
+public:
     using data_type = int;
     using size_type = std::size_t;
+    using reference = data_type&;
+    using size_reference = size_type&;
+    using pointer = data_type*;
+    using const_pointer = const data_type*;
 
     /// @brief Enum for magic num
     enum class MagicNum {
@@ -42,8 +47,8 @@ struct PPM {
      * @exception std::runtime_error If magic num is not P3 or P6
      * @exception std::overflow_error If w, h, or max are too large
      */
-    PPM(MagicNum m = MagicNum::P3, size_type w = 0, size_type h = 0,
-    size_type max = 0, std::vector<data_type> d = {0}) {
+    explicit PPM(MagicNum m = MagicNum::P3, size_type w = 0, size_type h = 0,
+    size_type max = 0, std::vector<data_type> d = {}) {
         assert(m == MagicNum::P3 || m == MagicNum::P6);
         assert(w <= MAX_WIDTH);
         assert(h <= MAX_HEIGHT);
@@ -69,6 +74,65 @@ struct PPM {
         m_data = d;
     }
 
+    /**
+     * @brief Sets magic number
+     * @param value data
+     */
+    void set_magic_num(MagicNum value) noexcept { m_magic = value; }
+    /**
+     * @brief Sets image width
+     * @param value num
+     */
+    void set_width(size_type value) noexcept { m_width = value; }
+    /**
+     * @brief Sets image height
+     * @param value width
+     */
+    void set_height(size_type value) noexcept { m_height = value; }
+    /**
+     * @brief Sets max color value
+     * @param value height
+     */
+    void set_max(size_type value) noexcept { m_max = value; }
+    /**
+     * @brief Pushes value into m_data
+     * @param value value to push
+     */
+    void push_back(data_type value) { m_data.push_back(value); }
+    /**
+     * @brief Clears m_data
+     */
+    void clear_data() { m_data.clear(); }
+
+    /**
+     * @brief Gets m_magic
+     */
+    MagicNum get_magic(void) const noexcept { return m_magic; }
+    /**
+     * @brief Gets width
+     */
+    size_type get_width(void) const noexcept { return m_width; }
+    /**
+     * @brief Gets height
+     */
+    size_type get_height(void) const noexcept { return m_height; }
+    /**
+     * @brief Gets max color value
+     */
+    size_type get_max(void) const noexcept { return m_max; }
+
+    /**
+     * @brief Returns iterator to start of m_data
+     */
+    auto begin(void) noexcept { return m_data.begin(); }
+    auto cbegin(void) const noexcept { return m_data.cbegin(); }
+    /**
+     * @brief Returns iterator to end of m_data
+     */
+    auto end(void) noexcept { return m_data.end(); }
+    auto cend(void) const noexcept { return m_data.cend(); }
+
+private:
     MagicNum m_magic;                       /// Magic num
     size_type m_width;                      /// Width
     size_type m_height;                     /// Height
@@ -95,12 +159,12 @@ int main(int argc, char** argv) {
         std::cout << "[ERR] " << e.what() << '\n';
     }
 
-    std::cout << static_cast<int>(ppm.m_magic) << '\n';
-    std::cout << ppm.m_width << '\n';
-    std::cout << ppm.m_height << '\n';
-    std::cout << ppm.m_max << '\n';
+    std::cout << static_cast<int>(ppm.get_magic()) << '\n';
+    std::cout << ppm.get_width() << '\n';
+    std::cout << ppm.get_height() << '\n';
+    std::cout << ppm.get_max() << '\n';
 
-    for (PPM::data_type& i : ppm.m_data) {
+    for (const PPM::data_type& i : ppm) {
         std::cout << i << '\n';
     }
 }           // main
@@ -126,9 +190,9 @@ std::istream& operator>>(std::istream& is, PPM& img) {
     is >> m;
 
     if (m == "P3") {
-        img.m_magic = PPM::MagicNum::P3;
+        img.set_magic_num(PPM::MagicNum::P3);
     } else if (m == "P6") {
-        img.m_magic = PPM::MagicNum::P6;
+        img.set_magic_num(PPM::MagicNum::P6);
     } else {
         throw std::runtime_error("Invalid magic number from input");
     }
@@ -137,22 +201,23 @@ std::istream& operator>>(std::istream& is, PPM& img) {
         throw std::runtime_error("Invalid width from input");
     }
 
-    img.m_width = w;
+    img.set_width(w);
 
     if (!(is >> h) || h > MAX_HEIGHT) {
         throw std::runtime_error("Invalid height from input");
     }
 
-    img.m_height = h;
+    img.set_height(h);
 
     if (!(is >> max) || max > MAX_COLOR_VALUE) {
         throw std::runtime_error("Invalid max color value from input");
     }
 
-    img.m_max = max;
+    img.set_max(max);
+    img.clear_data();
 
     while (is >> c) {
-        img.m_data.push_back(c);
+        img.push_back(c);
     }
 
     return is;
