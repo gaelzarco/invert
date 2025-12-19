@@ -105,31 +105,45 @@ public:
     void clear_data() { m_data.clear(); }
 
     /**
-     * @brief Gets m_magic
+     * @brief  Gets m_magic
+     * @return m_magic
      */
     MagicNum get_magic(void) const noexcept { return m_magic; }
     /**
-     * @brief Gets width
+     * @brief  Gets width
+     * @return m_width
      */
     size_type get_width(void) const noexcept { return m_width; }
     /**
-     * @brief Gets height
+     * @brief  Gets height
+     * @return m_height
      */
     size_type get_height(void) const noexcept { return m_height; }
     /**
-     * @brief Gets max color value
+     * @brief  Gets max color value
+     * @return m_max
      */
     size_type get_max(void) const noexcept { return m_max; }
 
     /**
-     * @brief Returns iterator to start of m_data
+     * @brief  Returns iterator to m_data
+     * @return iterator to m_data
      */
     auto begin(void) noexcept { return m_data.begin(); }
+    /**
+     * @brief  Returns const iterator to m_data
+     * @return const iterator to m_data
+     */
     auto cbegin(void) const noexcept { return m_data.cbegin(); }
     /**
-     * @brief Returns iterator to end of m_data
+     * @brief  Returns iterator to el past m_data
+     * @return iterator to one el past m_data
      */
     auto end(void) noexcept { return m_data.end(); }
+    /**
+     * @brief  Returns const iterator to el past m_data
+     * @return const iterator to one el past m_data
+     */
     auto cend(void) const noexcept { return m_data.cend(); }
 
 private:
@@ -187,32 +201,31 @@ std::istream& operator>>(std::istream& is, PPM& img) {
     PPM::size_type max;         /// Holds max color value from is
     PPM::data_type c;           /// Holds color value from is
 
-    is >> m;
-
-    if (m == "P3") {
-        img.set_magic_num(PPM::MagicNum::P3);
-    } else if (m == "P6") {
-        img.set_magic_num(PPM::MagicNum::P6);
-    } else {
-        throw std::runtime_error("Invalid magic number from input");
+    if (!(is >> m) && (m != "P3" && m != "P6")) {
+        throw std::runtime_error("Invalid magic number from input")
     }
 
     if (!(is >> w) || w > MAX_WIDTH) {
         throw std::runtime_error("Invalid width from input");
     }
 
-    img.set_width(w);
-
     if (!(is >> h) || h > MAX_HEIGHT) {
         throw std::runtime_error("Invalid height from input");
     }
-
-    img.set_height(h);
 
     if (!(is >> max) || max > MAX_COLOR_VALUE) {
         throw std::runtime_error("Invalid max color value from input");
     }
 
+
+    if (m == "P3") {
+        img.set_magic_num(PPM::MagicNum::P3);
+    } else if (m == "P6") {
+        img.set_magic_num(PPM::MagicNum::P6);
+    }
+
+    img.set_width(w);
+    img.set_height(h);
     img.set_max(max);
     img.clear_data();
 
