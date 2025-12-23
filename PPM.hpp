@@ -7,7 +7,7 @@
 #ifndef PPM_HPP
 #define PPM_HPP
 
-#include <cstdint>      // uint16_t
+#include <cstdint>      // uint8_t, uint16_t
 #include <cstddef>      // size_t
 #include <vector>
 #include <string>
@@ -195,7 +195,7 @@ void PPM::out_ppm(std::ostream& os) const {
             os.write(reinterpret_cast<const char*>(bytes), 2);
         }
     }
-}
+}           // out_ppm
 
 std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     std::string m{};                /// Holds magic num from is
@@ -215,6 +215,8 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     if (!(is >> max) || max > PPM::MAX_COLOR_VALUE)
         return std::unexpected(PPM::Error{"Invalid max color val from input"});
 
+    /// Total per-pixel RGB color values
+    const PPM::size_type samples = w * h * 3;
     PPM img{};                      /// Holds image
     img.set_magic_num(m == "P3" ? PPM::MagicNum::P3 : PPM::MagicNum::P6);
     img.set_width(w);
@@ -222,43 +224,45 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     img.set_max(max);
     img.clear();
 
-    const std::size_t samples =
-        static_cast<std::size_t>(w) * static_cast<std::size_t>(h) * 3;
-
     if (m != "P6") {
-        // P3 is ASCII integers separated by whitespace
-        int v;
+        int v;                      /// Holds current pixel RGB value
 
-        for (std::size_t i = 0; i < samples; ++i) {
+        for (PPM::size_type i{}; i < samples; ++i) {
             if (!(is >> v))
                 return std::unexpected(PPM::Error{"Unexpected EOF in P3 data"});
-            if (v < 0 || v > static_cast<int>(max))
-                return std::unexpected(PPM::Error{"P3 color value out of range"});
+            if (v > max)
+                return std::unexpected(PPM::Error{
+                    "P3 color value out of range"
+                });
             img.push_back(static_cast<PPM::data_type>(v));
         }
 
         return img;
     }
 
-    // P6 is binary; consume whitespace after max before binary data begins
-    is >> std::ws;
+    // Ignore any whitespace after max before binary data begins
+    is.ignore(255, '\n');
 
     if (max <= 255) {
-        // 8-bit samples on disk
-        for (std::size_t i = 0; i < samples; ++i) {
-            unsigned char b = 0;
+        // 8-bit samples
+        for (PPM::size_type i{}; i < samples; ++i) {
+           std::uint8_t b = 0;
             if (!is.read(reinterpret_cast<char*>(&b), 1))
                 return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (8-bit)"});
             img.push_back(static_cast<PPM::data_type>(b));
         }
-    } else {
-        // 16-bit samples on disk, big-endian
-        for (std::size_t i = 0; i < samples; ++i) {
-            unsigned char hi = 0, lo = 0;
+    } 
+
+    if (max > 255) {
+        // 16-bit samples
+        for (PPM::size_type i{}; i < samples; ++i) {
+            std::uint8_t hi = 0;
+            std::uint8_t lo = 0;
             if (!is.read(reinterpret_cast<char*>(&hi), 1) ||
                 !is.read(reinterpret_cast<char*>(&lo), 1))
                 return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (16-bit)"});
 
+            /// Holds current pixel RGB value
             std::uint16_t v =
                 (static_cast<std::uint16_t>(hi) << 8) |
                 static_cast<std::uint16_t>(lo);
