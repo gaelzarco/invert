@@ -13,13 +13,16 @@
 #include <string>
 #include <cassert>
 #include <stdexcept>
+#include <expected>
+#include <print>
+#include <iostream>
 
 /// @brief PPM image
 class PPM {
 public:
-    inline static constexpr std::size_t MAX_WIDTH       = 1920;
-    inline static constexpr std::size_t MAX_HEIGHT      = 1080;
-    inline static constexpr std::size_t MAX_COLOR_VALUE = 65'536;
+    static constexpr std::size_t MAX_WIDTH       = 1920;
+    static constexpr std::size_t MAX_HEIGHT      = 1080;
+    static constexpr std::size_t MAX_COLOR_VALUE = 65'536;
 
     using data_type = std::uint16_t;            /// Data type for pixels
     using size_type = std::size_t;              /// Size types
@@ -73,6 +76,13 @@ public:
      * @brief Clears m_data
      */
     void clear() { m_data.clear(); }
+    /**
+     * @brief  Reads a PPM image from std::istream and returns expected value of
+     *         PPM or PPM::Error
+     * @param  is Input stream reference
+     * @return expected value of PPM or PPM::Error
+     */
+    friend std::expected<PPM, PPM::Error> read_ppm(std::istream& is);
 
     /**
      * @brief  Gets m_magic
@@ -94,6 +104,11 @@ public:
      * @return m_max
      */
     size_type get_max(void) const noexcept { return m_max; }
+    /**
+     * @brief  Inverts color values
+     * @return m_max
+     */
+    void invert(void) { for (auto& i : m_data) { i = get_max() - i; } }
 
     /**
      * @brief  Returns iterator to m_data
@@ -115,6 +130,10 @@ public:
      * @return const iterator to one el past m_data
      */
     auto end(void) const noexcept { return m_data.end(); }
+    /**
+     * @brief Prints image data as unsigned int
+     */
+    void out_ppm(std::ostream& os) const;
 
 private:
     MagicNum m_magic;                       /// Magic num
@@ -155,6 +174,104 @@ PPM::size_type max, std::vector<PPM::data_type> d)
     m_max = max;
     m_data = d;
 }           // PPM
+
+void PPM::out_ppm(std::ostream& os) const {
+    os << (static_cast<int>(get_magic()) == 0 ? "P3" : "P6") << '\n';
+    os << get_width() << ' ' << get_height() << '\n';
+    os << get_max() << '\n';
+
+    if (get_max() <= 255) {
+        for (auto v : m_data) {
+            unsigned char b = static_cast<unsigned char>(v);
+            os.write(reinterpret_cast<const char*>(&b), 1);
+        }
+    } else {
+        for (auto v : m_data) {
+            // big-endian
+            unsigned char bytes[2]{
+                static_cast<unsigned char>((v >> 8) & 0xFF),
+                static_cast<unsigned char>(v & 0xFF)
+            };
+            os.write(reinterpret_cast<const char*>(bytes), 2);
+        }
+    }
+}
+
+std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
+    std::string m{};                /// Holds magic num from is
+    PPM::size_type w{};             /// Holds width from is
+    PPM::size_type h{};             /// Holds height from is
+    PPM::size_type max{};           /// Holds max color value from is
+
+    if (!(is >> m) || (m != "P3" && m != "P6"))
+        return std::unexpected(PPM::Error{"Invalid magic number from input"});
+
+    if (!(is >> w) || w > PPM::MAX_WIDTH)
+        return std::unexpected(PPM::Error{"Invalid width from input"});
+
+    if (!(is >> h) || h > PPM::MAX_HEIGHT)
+        return std::unexpected(PPM::Error{"Invalid height from input"});
+
+    if (!(is >> max) || max > PPM::MAX_COLOR_VALUE)
+        return std::unexpected(PPM::Error{"Invalid max color val from input"});
+
+    PPM img{};                      /// Holds image
+    img.set_magic_num(m == "P3" ? PPM::MagicNum::P3 : PPM::MagicNum::P6);
+    img.set_width(w);
+    img.set_height(h);
+    img.set_max(max);
+    img.clear();
+
+    const std::size_t samples =
+        static_cast<std::size_t>(w) * static_cast<std::size_t>(h) * 3;
+
+    if (m != "P6") {
+        // P3 is ASCII integers separated by whitespace
+        int v;
+
+        for (std::size_t i = 0; i < samples; ++i) {
+            if (!(is >> v))
+                return std::unexpected(PPM::Error{"Unexpected EOF in P3 data"});
+            if (v < 0 || v > static_cast<int>(max))
+                return std::unexpected(PPM::Error{"P3 color value out of range"});
+            img.push_back(static_cast<PPM::data_type>(v));
+        }
+
+        return img;
+    }
+
+    // P6 is binary; consume whitespace after max before binary data begins
+    is >> std::ws;
+
+    if (max <= 255) {
+        // 8-bit samples on disk
+        for (std::size_t i = 0; i < samples; ++i) {
+            unsigned char b = 0;
+            if (!is.read(reinterpret_cast<char*>(&b), 1))
+                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (8-bit)"});
+            img.push_back(static_cast<PPM::data_type>(b));
+        }
+    } else {
+        // 16-bit samples on disk, big-endian
+        for (std::size_t i = 0; i < samples; ++i) {
+            unsigned char hi = 0, lo = 0;
+            if (!is.read(reinterpret_cast<char*>(&hi), 1) ||
+                !is.read(reinterpret_cast<char*>(&lo), 1))
+                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (16-bit)"});
+
+            std::uint16_t v =
+                (static_cast<std::uint16_t>(hi) << 8) |
+                static_cast<std::uint16_t>(lo);
+
+            if (v > max)
+                return std::unexpected(PPM::Error{"P6 color value out of range"});
+
+            img.push_back(static_cast<PPM::data_type>(v));
+        }
+    }
+
+    return img;
+}           // read_ppm
 
 #endif      // PPM_HPP
 
