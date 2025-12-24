@@ -1,0 +1,201 @@
+\doxysection{PPM.\+hpp}
+\hypertarget{PPM_8hpp_source}{}\label{PPM_8hpp_source}\mbox{\hyperlink{PPM_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ PPM\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ PPM\_HPP}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \ \ \ \ \ \textcolor{comment}{//\ uint8\_t,\ uint16\_t}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \ \ \ \ \ \textcolor{comment}{//\ size\_t}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <expected>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <print>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}{PPM}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classPPM_ad419562dffce265cc7f8e83c322a1f0f}{MAX\_WIDTH}}\ \ \ \ \ \ \ =\ 1920;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}{MAX\_HEIGHT}}\ \ \ \ \ \ =\ 1080;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::size\_t\ \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{MAX\_COLOR\_VALUE}}\ =\ 65'536;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\_type}}\ =\ std::uint16\_t;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ =\ std::size\_t;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPPM_a57b4e1f98b6a091f56313cc4daa1f64e}{reference}}\ =\ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\_type}}\&;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPPM_aec2a8f230fffba16e6da494c97d7cd72}{pointer}}\ =\ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\_type}}*;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classPPM_a002d6a0b43d6957fdd127e98b1662d9e}{const\_pointer}}\ =\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\_type}}*;\ \ \ \ \ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPPM_1_1Error}{Error}}\ \{\ std::string\ \mbox{\hyperlink{structPPM_1_1Error_a972fd83326475e4fb6571e07259f679a}{msg}};\ \};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{MagicNum}}\ \{\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{P3}},\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}{P6}}\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}{PPM}}(\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{MagicNum}}\ m\ =\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{MagicNum::P3}},\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ w\ =\ 0,\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ h\ =\ 0,}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ max\ =\ 0,\ std::vector<data\_type>\ d\ =\ \{\});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a1b5e9b60db2e8960614d5b74ea60995d}{set\_magic\_num}}(\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{MagicNum}}\ value)\ \textcolor{keyword}{noexcept}\ \{\ m\_magic\ =\ value;\ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a7e98b083af0e58fa945ac325fe323d71}{set\_width}}(\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ value)\ \textcolor{keyword}{noexcept}\ \{\ m\_width\ =\ value;\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a06533c2b5b323c6ba21c687d5d471477}{set\_height}}(\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ value)\ \textcolor{keyword}{noexcept}\ \{\ m\_height\ =\ value;\ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_ae537b57a4e49e69f36a3af70a86c6282}{set\_max}}(\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ value)\ \textcolor{keyword}{noexcept}\ \{\ m\_max\ =\ value;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\_type}}\ value)\ \{\ m\_data.push\_back(value);\ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_ad967cae26730d2e8a2b76e69894479e0}{clear}}()\ \{\ m\_data.clear();\ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{friend}\ std::expected<PPM,\ PPM::Error>\ \mbox{\hyperlink{classPPM_a1ed2539fca8184b1524d212c7e0e06f3}{read\_ppm}}(std::istream\&\ is);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{MagicNum}}\ \mbox{\hyperlink{classPPM_a09d66e5bc50b7a3e20514400be5f0fef}{get\_magic}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_magic;\ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ \mbox{\hyperlink{classPPM_af9ce903818d23e9d6b66c6405eb2b461}{get\_width}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_width;\ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ \mbox{\hyperlink{classPPM_ad629c53920ed0af50628af2dc2d8e566}{get\_height}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_height;\ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ \mbox{\hyperlink{classPPM_a8cd2c1aea120524734a8bc1985b55c68}{get\_max}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_max;\ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a2400779f42379e6855616ac0812570cc}{invert}}(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ i\ :\ m\_data)\ \{\ i\ =\ \mbox{\hyperlink{classPPM_a8cd2c1aea120524734a8bc1985b55c68}{get\_max}}()\ -\/\ i;\ \}\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classPPM_ac8561f10ab91054fe9461e1e8c5bb2b5}{begin}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_data.begin();\ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classPPM_a36d9f34ca6fa1e88000685c977c2fdf3}{begin}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_data.begin();\ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classPPM_a2b2d7b82a1883fa75877ba9b8940599d}{end}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_data.end();\ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classPPM_a8b4e97a1f1908ae5d5b9d9f1fc1e242c}{end}}(\textcolor{keywordtype}{void})\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ m\_data.end();\ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a0f2392247d9d28876535ad0e71eb2e8e}{out\_ppm}}(std::ostream\&\ os)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{MagicNum}}\ m\_magic;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ m\_width;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ m\_height;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\_type}}\ m\_max;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ std::vector<data\_type>\ m\_data;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PPM}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00147\ \textcolor{comment}{//\ MEMBER\ DEFINITION(S)}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \mbox{\hyperlink{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}{PPM::PPM}}(\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{PPM::MagicNum}}\ m,\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ w,\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ h,}
+\DoxyCodeLine{00151\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ max,\ std::vector<PPM::data\_type>\ d)}
+\DoxyCodeLine{00152\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ assert(m\ ==\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{PPM::MagicNum::P3}}\ ||\ m\ ==\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}{PPM::MagicNum::P6}});}
+\DoxyCodeLine{00154\ \ \ \ \ assert(w\ <=\ \mbox{\hyperlink{classPPM_ad419562dffce265cc7f8e83c322a1f0f}{MAX\_WIDTH}});}
+\DoxyCodeLine{00155\ \ \ \ \ assert(h\ <=\ \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}{MAX\_HEIGHT}});}
+\DoxyCodeLine{00156\ \ \ \ \ assert(max\ <=\ \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{MAX\_COLOR\_VALUE}});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ !=\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{PPM::MagicNum::P3}}\ \&\&\ m\ !=\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}{PPM::MagicNum::P6}})\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}PPM\ magic\ num\ is\ not\ P3\ or\ P6"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ >\ \mbox{\hyperlink{classPPM_ad419562dffce265cc7f8e83c322a1f0f}{MAX\_WIDTH}})\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::overflow\_error(\textcolor{stringliteral}{"{}PPM\ width\ too\ large\ (MAX\ 1920)"{}});}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{if}\ (h\ >\ \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}{MAX\_HEIGHT}})\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::overflow\_error(\textcolor{stringliteral}{"{}PPM\ height\ too\ large\ (MAX\ 1080)"{}});}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{MAX\_COLOR\_VALUE}})\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::overflow\_error(\textcolor{stringliteral}{"{}PPM\ max\ color\ value\ over\ 65536"{}});}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ m\_magic\ =\ m;}
+\DoxyCodeLine{00172\ \ \ \ \ m\_width\ =\ w;}
+\DoxyCodeLine{00173\ \ \ \ \ m\_height\ =\ h;}
+\DoxyCodeLine{00174\ \ \ \ \ m\_max\ =\ max;}
+\DoxyCodeLine{00175\ \ \ \ \ m\_data\ =\ d;}
+\DoxyCodeLine{00176\ \}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ constructor}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPPM_a0f2392247d9d28876535ad0e71eb2e8e}{PPM::out\_ppm}}(std::ostream\&\ os)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00179\ \ \ \ \ os\ <<\ (static\_cast<int>(\mbox{\hyperlink{classPPM_a09d66e5bc50b7a3e20514400be5f0fef}{get\_magic}}())\ ==\ 0\ ?\ \textcolor{stringliteral}{"{}P3"{}}\ :\ \textcolor{stringliteral}{"{}P6"{}})\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00180\ \ \ \ \ os\ <<\ \mbox{\hyperlink{classPPM_af9ce903818d23e9d6b66c6405eb2b461}{get\_width}}()\ <<\ \textcolor{charliteral}{'\ '}\ <<\ \mbox{\hyperlink{classPPM_ad629c53920ed0af50628af2dc2d8e566}{get\_height}}()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00181\ \ \ \ \ os\ <<\ \mbox{\hyperlink{classPPM_a8cd2c1aea120524734a8bc1985b55c68}{get\_max}}()\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classPPM_a8cd2c1aea120524734a8bc1985b55c68}{get\_max}}()\ <=\ 255)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v\ :\ m\_data)\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ b\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(v);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&b),\ 1);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v\ :\ m\_data)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ big-\/endian}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ bytes[2]\{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}((v\ >>\ 8)\ \&\ 0xFF),}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(v\ \&\ 0xFF)}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ os.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(bytes),\ 2);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ out\_ppm}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ std::expected<PPM,\ PPM::Error>\ \mbox{\hyperlink{PPM_8hpp_a1ed2539fca8184b1524d212c7e0e06f3}{read\_ppm}}(std::istream\&\ is)\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ std::string\ m\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ w\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ h\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ max\{\};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ m)\ ||\ (m\ !=\ \textcolor{stringliteral}{"{}P3"{}}\ \&\&\ m\ !=\ \textcolor{stringliteral}{"{}P6"{}}))}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Invalid\ magic\ number"{}}\});}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ w)\ ||\ w\ >\ \mbox{\hyperlink{classPPM_ad419562dffce265cc7f8e83c322a1f0f}{PPM::MAX\_WIDTH}})}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Width\ is\ invalid\ or\ out\ of\ range"{}}\});}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ h)\ ||\ h\ >\ \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}{PPM::MAX\_HEIGHT}})}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Height\ is\ invalid\ or\ out\ of\ range"{}}\});}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ max)\ ||\ max\ >\ \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{PPM::MAX\_COLOR\_VALUE}})}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Max\ color\ value\ is\ invalid\ or\ out\ of\ range"{}}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ samples\ =\ w\ *\ h\ *\ 3;}
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}{PPM}}\ img\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ img.\mbox{\hyperlink{classPPM_a1b5e9b60db2e8960614d5b74ea60995d}{set\_magic\_num}}(m\ ==\ \textcolor{stringliteral}{"{}P3"{}}\ ?\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{PPM::MagicNum::P3}}\ :\ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}{PPM::MagicNum::P6}});}
+\DoxyCodeLine{00224\ \ \ \ \ img.\mbox{\hyperlink{classPPM_a7e98b083af0e58fa945ac325fe323d71}{set\_width}}(w);}
+\DoxyCodeLine{00225\ \ \ \ \ img.\mbox{\hyperlink{classPPM_a06533c2b5b323c6ba21c687d5d471477}{set\_height}}(h);}
+\DoxyCodeLine{00226\ \ \ \ \ img.\mbox{\hyperlink{classPPM_ae537b57a4e49e69f36a3af70a86c6282}{set\_max}}(max);}
+\DoxyCodeLine{00227\ \ \ \ \ img.\mbox{\hyperlink{classPPM_ad967cae26730d2e8a2b76e69894479e0}{clear}}();}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ !=\ \textcolor{stringliteral}{"{}P6"{}})\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ v;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ v))}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P3\ data"{}}\});}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ >\ max)}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Color\ value\ out\ of\ range"{}}\});}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(v));}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ img;}
+\DoxyCodeLine{00241\ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//\ Ignore\ any\ whitespace\ after\ max\ before\ binary\ data\ begins}}
+\DoxyCodeLine{00244\ \ \ \ \ is.ignore(255,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ <=\ 255)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 8-\/bit\ samples}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ b\ =\ 0;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&b),\ 1))}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(b));}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \}\ }
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ 255)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 16-\/bit\ samples}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ hi\ =\ 0;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ lo\ =\ 0;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&hi),\ 1)\ ||}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&lo),\ 1))}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint16\_t\ v\ =}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(hi)\ <<\ 8)\ |}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(lo);}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ >\ max)}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Color\ value\ out\ of\ range"{}}\});}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(v));}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{return}\ img;}
+\DoxyCodeLine{00278\ \}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\_ppm}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ }\textcolor{comment}{//\ PPM\_HPP}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ EOF\ PPM.hpp}}
+
+\end{DoxyCode}

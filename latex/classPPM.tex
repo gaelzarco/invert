@@ -1,0 +1,478 @@
+\doxysection{PPM Class Reference}
+\hypertarget{classPPM}{}\label{classPPM}\index{PPM@{PPM}}
+
+
+\doxylink{classPPM}{PPM} image.  
+
+
+
+
+{\ttfamily \#include $<$PPM.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPPM_1_1Error}{Error}}
+\begin{DoxyCompactList}\small\item\em Const data type pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} \{ \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{P3}}
+, \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}{P6}}
+ \}
+\begin{DoxyCompactList}\small\item\em Magic num. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}} = std\+::uint16\+\_\+t
+\item 
+using \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} = std\+::size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Data type for pixels. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classPPM_a57b4e1f98b6a091f56313cc4daa1f64e}{reference}} = \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\&
+\begin{DoxyCompactList}\small\item\em Size types. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classPPM_aec2a8f230fffba16e6da494c97d7cd72}{pointer}} = \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\texorpdfstring{$\ast$}{*}
+\begin{DoxyCompactList}\small\item\em Data type reference. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classPPM_a002d6a0b43d6957fdd127e98b1662d9e}{const\+\_\+pointer}} = const \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\texorpdfstring{$\ast$}{*}
+\begin{DoxyCompactList}\small\item\em Data type pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}{PPM}} (\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} m=\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{Magic\+Num\+::\+P3}}, \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} w=0, \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} h=0, \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} max=0, std\+::vector$<$ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}} $>$ d=\{\})
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a1b5e9b60db2e8960614d5b74ea60995d}{set\+\_\+magic\+\_\+num}} (\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} value) noexcept
+\begin{DoxyCompactList}\small\item\em Sets magic number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a7e98b083af0e58fa945ac325fe323d71}{set\+\_\+width}} (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} value) noexcept
+\begin{DoxyCompactList}\small\item\em Sets image width. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a06533c2b5b323c6ba21c687d5d471477}{set\+\_\+height}} (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} value) noexcept
+\begin{DoxyCompactList}\small\item\em Sets image height. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_ae537b57a4e49e69f36a3af70a86c6282}{set\+\_\+max}} (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} value) noexcept
+\begin{DoxyCompactList}\small\item\em Sets max color value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\+\_\+back}} (\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}} value)
+\begin{DoxyCompactList}\small\item\em Pushes value into m\+\_\+data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_ad967cae26730d2e8a2b76e69894479e0}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears m\+\_\+data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} \mbox{\hyperlink{classPPM_a09d66e5bc50b7a3e20514400be5f0fef}{get\+\_\+magic}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets m\+\_\+magic. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_af9ce903818d23e9d6b66c6405eb2b461}{get\+\_\+width}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets width. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_ad629c53920ed0af50628af2dc2d8e566}{get\+\_\+height}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets height. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_a8cd2c1aea120524734a8bc1985b55c68}{get\+\_\+max}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets max color value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a2400779f42379e6855616ac0812570cc}{invert}} (void)
+\begin{DoxyCompactList}\small\item\em Inverts color values. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classPPM_ac8561f10ab91054fe9461e1e8c5bb2b5}{begin}} (void) noexcept
+\begin{DoxyCompactList}\small\item\em Returns iterator to m\+\_\+data. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classPPM_a36d9f34ca6fa1e88000685c977c2fdf3}{begin}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Returns const iterator to m\+\_\+data. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classPPM_a2b2d7b82a1883fa75877ba9b8940599d}{end}} (void) noexcept
+\begin{DoxyCompactList}\small\item\em Returns iterator to el past m\+\_\+data. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classPPM_a8b4e97a1f1908ae5d5b9d9f1fc1e242c}{end}} (void) const noexcept
+\begin{DoxyCompactList}\small\item\em Returns const iterator to el past m\+\_\+data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPPM_a0f2392247d9d28876535ad0e71eb2e8e}{out\+\_\+ppm}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Prints image data as unsigned int. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classPPM_ad419562dffce265cc7f8e83c322a1f0f}{MAX\+\_\+\+WIDTH}} = 1920
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}{MAX\+\_\+\+HEIGHT}} = 1080
+\item 
+static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{MAX\+\_\+\+COLOR\+\_\+\+VALUE}} = 65\textquotesingle{}536
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ \mbox{\hyperlink{classPPM_a1ed2539fca8184b1524d212c7e0e06f3}{read\+\_\+ppm}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Reads a \doxylink{classPPM}{PPM} image from std\+::istream and returns expected value of \doxylink{classPPM}{PPM} or \doxylink{structPPM_1_1Error}{PPM\+::\+Error}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classPPM}{PPM} image. 
+
+\label{doc-typedef-members}
+\Hypertarget{classPPM_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classPPM_a002d6a0b43d6957fdd127e98b1662d9e}\index{PPM@{PPM}!const\_pointer@{const\_pointer}}
+\index{const\_pointer@{const\_pointer}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{const\_pointer}{const\_pointer}}
+{\footnotesize\ttfamily \label{classPPM_a002d6a0b43d6957fdd127e98b1662d9e} 
+using \mbox{\hyperlink{classPPM_a002d6a0b43d6957fdd127e98b1662d9e}{PPM\+::const\+\_\+pointer}} = const \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\texorpdfstring{$\ast$}{*}}
+
+
+
+Data type pointer. 
+
+\Hypertarget{classPPM_a0928ed55aba778149969b9ad9ea92410}\index{PPM@{PPM}!data\_type@{data\_type}}
+\index{data\_type@{data\_type}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{data\_type}{data\_type}}
+{\footnotesize\ttfamily \label{classPPM_a0928ed55aba778149969b9ad9ea92410} 
+using \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM\+::data\+\_\+type}} = std\+::uint16\+\_\+t}
+
+\Hypertarget{classPPM_aec2a8f230fffba16e6da494c97d7cd72}\index{PPM@{PPM}!pointer@{pointer}}
+\index{pointer@{pointer}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily \label{classPPM_aec2a8f230fffba16e6da494c97d7cd72} 
+using \mbox{\hyperlink{classPPM_aec2a8f230fffba16e6da494c97d7cd72}{PPM\+::pointer}} = \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\texorpdfstring{$\ast$}{*}}
+
+
+
+Data type reference. 
+
+\Hypertarget{classPPM_a57b4e1f98b6a091f56313cc4daa1f64e}\index{PPM@{PPM}!reference@{reference}}
+\index{reference@{reference}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily \label{classPPM_a57b4e1f98b6a091f56313cc4daa1f64e} 
+using \mbox{\hyperlink{classPPM_a57b4e1f98b6a091f56313cc4daa1f64e}{PPM\+::reference}} = \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}\&}
+
+
+
+Size types. 
+
+\Hypertarget{classPPM_a32fa719ad47399477c29b21f30075778}\index{PPM@{PPM}!size\_type@{size\_type}}
+\index{size\_type@{size\_type}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{size\_type}{size\_type}}
+{\footnotesize\ttfamily \label{classPPM_a32fa719ad47399477c29b21f30075778} 
+using \mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM\+::size\+\_\+type}} = std\+::size\+\_\+t}
+
+
+
+Data type for pixels. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{classPPM_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}\index{PPM@{PPM}!MagicNum@{MagicNum}}
+\index{MagicNum@{MagicNum}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{MagicNum}{MagicNum}}
+{\footnotesize\ttfamily \label{classPPM_a860897233dbad8ec41fc482cbfa1f9c3} 
+enum class \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{PPM\+::\+Magic\+Num}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Magic num. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P3@{P3}!PPM@{PPM}}\index{PPM@{PPM}!P3@{P3}}}\Hypertarget{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}\label{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e} 
+P3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P6@{P6}!PPM@{PPM}}\index{PPM@{PPM}!P6@{P6}}}\Hypertarget{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81}\label{classPPM_a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81} 
+P6&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-constructors}
+\Hypertarget{classPPM_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19}\index{PPM@{PPM}!PPM@{PPM}}
+\index{PPM@{PPM}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{PPM()}{PPM()}}
+{\footnotesize\ttfamily \label{classPPM_a4e4ed28b3e4f4bc48eb8bdf80b896c19} 
+PPM\+::\+PPM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}}}]{m}{ = {\ttfamily \mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e}{Magic\+Num\+::\+P3}}}, }\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{w}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{h}{ = {\ttfamily 0}, }\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{max}{ = {\ttfamily 0}, }\item[{std\+::vector$<$ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}} $>$}]{d}{ = {\ttfamily \{\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Magic num \\
+\hline
+{\em w} & Width \\
+\hline
+{\em h} & Height \\
+\hline
+{\em d} & Pixel color values vector \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If magic num is not P3 or P6 \\
+\hline
+{\em std\+::overflow\+\_\+error} & If w, h, or max are too large \\
+\hline
+\end{DoxyExceptions}
+
+
+\label{doc-func-members}
+\Hypertarget{classPPM_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPPM_a36d9f34ca6fa1e88000685c977c2fdf3}\index{PPM@{PPM}!begin@{begin}}
+\index{begin@{begin}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classPPM_a36d9f34ca6fa1e88000685c977c2fdf3} 
+auto PPM\+::begin (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns const iterator to m\+\_\+data. 
+
+\begin{DoxyReturn}{Returns}
+const iterator to m\+\_\+data 
+\end{DoxyReturn}
+\Hypertarget{classPPM_ac8561f10ab91054fe9461e1e8c5bb2b5}\index{PPM@{PPM}!begin@{begin}}
+\index{begin@{begin}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classPPM_ac8561f10ab91054fe9461e1e8c5bb2b5} 
+auto PPM\+::begin (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns iterator to m\+\_\+data. 
+
+\begin{DoxyReturn}{Returns}
+iterator to m\+\_\+data 
+\end{DoxyReturn}
+\Hypertarget{classPPM_ad967cae26730d2e8a2b76e69894479e0}\index{PPM@{PPM}!clear@{clear}}
+\index{clear@{clear}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{classPPM_ad967cae26730d2e8a2b76e69894479e0} 
+void PPM\+::clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clears m\+\_\+data. 
+
+\Hypertarget{classPPM_a8b4e97a1f1908ae5d5b9d9f1fc1e242c}\index{PPM@{PPM}!end@{end}}
+\index{end@{end}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classPPM_a8b4e97a1f1908ae5d5b9d9f1fc1e242c} 
+auto PPM\+::end (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns const iterator to el past m\+\_\+data. 
+
+\begin{DoxyReturn}{Returns}
+const iterator to one el past m\+\_\+data 
+\end{DoxyReturn}
+\Hypertarget{classPPM_a2b2d7b82a1883fa75877ba9b8940599d}\index{PPM@{PPM}!end@{end}}
+\index{end@{end}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classPPM_a2b2d7b82a1883fa75877ba9b8940599d} 
+auto PPM\+::end (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Returns iterator to el past m\+\_\+data. 
+
+\begin{DoxyReturn}{Returns}
+iterator to one el past m\+\_\+data 
+\end{DoxyReturn}
+\Hypertarget{classPPM_ad629c53920ed0af50628af2dc2d8e566}\index{PPM@{PPM}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}}
+{\footnotesize\ttfamily \label{classPPM_ad629c53920ed0af50628af2dc2d8e566} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::get\+\_\+height (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Gets height. 
+
+\begin{DoxyReturn}{Returns}
+m\+\_\+height 
+\end{DoxyReturn}
+\Hypertarget{classPPM_a09d66e5bc50b7a3e20514400be5f0fef}\index{PPM@{PPM}!get\_magic@{get\_magic}}
+\index{get\_magic@{get\_magic}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{get\_magic()}{get\_magic()}}
+{\footnotesize\ttfamily \label{classPPM_a09d66e5bc50b7a3e20514400be5f0fef} 
+\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} PPM\+::get\+\_\+magic (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Gets m\+\_\+magic. 
+
+\begin{DoxyReturn}{Returns}
+m\+\_\+magic 
+\end{DoxyReturn}
+\Hypertarget{classPPM_a8cd2c1aea120524734a8bc1985b55c68}\index{PPM@{PPM}!get\_max@{get\_max}}
+\index{get\_max@{get\_max}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{get\_max()}{get\_max()}}
+{\footnotesize\ttfamily \label{classPPM_a8cd2c1aea120524734a8bc1985b55c68} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::get\+\_\+max (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Gets max color value. 
+
+\begin{DoxyReturn}{Returns}
+m\+\_\+max 
+\end{DoxyReturn}
+\Hypertarget{classPPM_af9ce903818d23e9d6b66c6405eb2b461}\index{PPM@{PPM}!get\_width@{get\_width}}
+\index{get\_width@{get\_width}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{get\_width()}{get\_width()}}
+{\footnotesize\ttfamily \label{classPPM_af9ce903818d23e9d6b66c6405eb2b461} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::get\+\_\+width (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Gets width. 
+
+\begin{DoxyReturn}{Returns}
+m\+\_\+width 
+\end{DoxyReturn}
+\Hypertarget{classPPM_a2400779f42379e6855616ac0812570cc}\index{PPM@{PPM}!invert@{invert}}
+\index{invert@{invert}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{invert()}{invert()}}
+{\footnotesize\ttfamily \label{classPPM_a2400779f42379e6855616ac0812570cc} 
+void PPM\+::invert (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inverts color values. 
+
+\begin{DoxyReturn}{Returns}
+m\+\_\+max 
+\end{DoxyReturn}
+\Hypertarget{classPPM_a0f2392247d9d28876535ad0e71eb2e8e}\index{PPM@{PPM}!out\_ppm@{out\_ppm}}
+\index{out\_ppm@{out\_ppm}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{out\_ppm()}{out\_ppm()}}
+{\footnotesize\ttfamily \label{classPPM_a0f2392247d9d28876535ad0e71eb2e8e} 
+void PPM\+::out\+\_\+ppm (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const}
+
+
+
+Prints image data as unsigned int. 
+
+\Hypertarget{classPPM_a87129ec29275edd52295304e67e29eba}\index{PPM@{PPM}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily \label{classPPM_a87129ec29275edd52295304e67e29eba} 
+void PPM\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Pushes value into m\+\_\+data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to push \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPPM_a06533c2b5b323c6ba21c687d5d471477}\index{PPM@{PPM}!set\_height@{set\_height}}
+\index{set\_height@{set\_height}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{set\_height()}{set\_height()}}
+{\footnotesize\ttfamily \label{classPPM_a06533c2b5b323c6ba21c687d5d471477} 
+void PPM\+::set\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Sets image height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & width \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPPM_a1b5e9b60db2e8960614d5b74ea60995d}\index{PPM@{PPM}!set\_magic\_num@{set\_magic\_num}}
+\index{set\_magic\_num@{set\_magic\_num}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{set\_magic\_num()}{set\_magic\_num()}}
+{\footnotesize\ttfamily \label{classPPM_a1b5e9b60db2e8960614d5b74ea60995d} 
+void PPM\+::set\+\_\+magic\+\_\+num (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Sets magic number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & data \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPPM_ae537b57a4e49e69f36a3af70a86c6282}\index{PPM@{PPM}!set\_max@{set\_max}}
+\index{set\_max@{set\_max}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{set\_max()}{set\_max()}}
+{\footnotesize\ttfamily \label{classPPM_ae537b57a4e49e69f36a3af70a86c6282} 
+void PPM\+::set\+\_\+max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Sets max color value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPPM_a7e98b083af0e58fa945ac325fe323d71}\index{PPM@{PPM}!set\_width@{set\_width}}
+\index{set\_width@{set\_width}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{set\_width()}{set\_width()}}
+{\footnotesize\ttfamily \label{classPPM_a7e98b083af0e58fa945ac325fe323d71} 
+void PPM\+::set\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Sets image width. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & num \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-related-members}
+\Hypertarget{classPPM_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classPPM_a1ed2539fca8184b1524d212c7e0e06f3}\index{PPM@{PPM}!read\_ppm@{read\_ppm}}
+\index{read\_ppm@{read\_ppm}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{read\_ppm}{read\_ppm}}
+{\footnotesize\ttfamily \label{classPPM_a1ed2539fca8184b1524d212c7e0e06f3} 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ read\+\_\+ppm (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Reads a \doxylink{classPPM}{PPM} image from std\+::istream and returns expected value of \doxylink{classPPM}{PPM} or \doxylink{structPPM_1_1Error}{PPM\+::\+Error}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Input stream reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+expected value of \doxylink{classPPM}{PPM} or \doxylink{structPPM_1_1Error}{PPM\+::\+Error} 
+\end{DoxyReturn}
+Holds magic num from is
+
+Holds width from is
+
+Holds height from is
+
+Holds max color value from is
+
+Total per-\/pixel RGB color values
+
+Holds image
+
+Holds current pixel RGB value
+
+Holds current pixel RGB value
+
+\label{doc-variable-members}
+\Hypertarget{classPPM_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPPM_adb24360991193de8fab0fc436e41ac6b}\index{PPM@{PPM}!MAX\_COLOR\_VALUE@{MAX\_COLOR\_VALUE}}
+\index{MAX\_COLOR\_VALUE@{MAX\_COLOR\_VALUE}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{MAX\_COLOR\_VALUE}{MAX\_COLOR\_VALUE}}
+{\footnotesize\ttfamily \label{classPPM_adb24360991193de8fab0fc436e41ac6b} 
+std\+::size\+\_\+t PPM\+::\+MAX\+\_\+\+COLOR\+\_\+\+VALUE = 65\textquotesingle{}536\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4}\index{PPM@{PPM}!MAX\_HEIGHT@{MAX\_HEIGHT}}
+\index{MAX\_HEIGHT@{MAX\_HEIGHT}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{MAX\_HEIGHT}{MAX\_HEIGHT}}
+{\footnotesize\ttfamily \label{classPPM_a9c92abcbba1e59d3ddbab7d56f91f6c4} 
+std\+::size\+\_\+t PPM\+::\+MAX\+\_\+\+HEIGHT = 1080\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classPPM_ad419562dffce265cc7f8e83c322a1f0f}\index{PPM@{PPM}!MAX\_WIDTH@{MAX\_WIDTH}}
+\index{MAX\_WIDTH@{MAX\_WIDTH}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{MAX\_WIDTH}{MAX\_WIDTH}}
+{\footnotesize\ttfamily \label{classPPM_ad419562dffce265cc7f8e83c322a1f0f} 
+std\+::size\+\_\+t PPM\+::\+MAX\+\_\+\+WIDTH = 1920\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{PPM_8hpp}{PPM.\+hpp}}\end{DoxyCompactItemize}

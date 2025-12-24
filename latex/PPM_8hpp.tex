@@ -1,0 +1,70 @@
+\doxysection{PPM.\+hpp File Reference}
+\hypertarget{PPM_8hpp}{}\label{PPM_8hpp}\index{PPM.hpp@{PPM.hpp}}
+
+
+\doxylink{classPPM}{PPM} image ADT with implementations.  
+
+
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$expected$>$}\newline
+{\ttfamily \#include $<$print$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPPM}{PPM}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classPPM}{PPM} image. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}}
+\begin{DoxyCompactList}\small\item\em Const data type pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ \mbox{\hyperlink{PPM_8hpp_a1ed2539fca8184b1524d212c7e0e06f3}{read\+\_\+ppm}} (std\+::istream \&is)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classPPM}{PPM} image ADT with implementations. 
+
+\begin{DoxyAuthor}{Author}
+GZ \href{mailto:gaelxarco@icloud.com}{\texttt{gaelxarco@icloud.\+com}} 
+\end{DoxyAuthor}
+
+
+\label{doc-func-members}
+\Hypertarget{PPM_8hpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{PPM_8hpp_a1ed2539fca8184b1524d212c7e0e06f3}\index{PPM.hpp@{PPM.hpp}!read\_ppm@{read\_ppm}}
+\index{read\_ppm@{read\_ppm}!PPM.hpp@{PPM.hpp}}
+\doxysubsubsection{\texorpdfstring{read\_ppm()}{read\_ppm()}}
+{\footnotesize\ttfamily \label{PPM_8hpp_a1ed2539fca8184b1524d212c7e0e06f3} 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ read\+\_\+ppm (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Input stream reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+expected value of \doxylink{classPPM}{PPM} or \doxylink{structPPM_1_1Error}{PPM\+::\+Error} 
+\end{DoxyReturn}
+Holds magic num from is
+
+Holds width from is
+
+Holds height from is
+
+Holds max color value from is
+
+Total per-\/pixel RGB color values
+
+Holds image
+
+Holds current pixel RGB value
+
+Holds current pixel RGB value
