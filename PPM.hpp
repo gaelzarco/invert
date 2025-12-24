@@ -173,7 +173,7 @@ PPM::size_type max, std::vector<PPM::data_type> d)
     m_height = h;
     m_max = max;
     m_data = d;
-}           // PPM
+}           // constructor
 
 void PPM::out_ppm(std::ostream& os) const {
     os << (static_cast<int>(get_magic()) == 0 ? "P3" : "P6") << '\n';
@@ -204,16 +204,18 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     PPM::size_type max{};           /// Holds max color value from is
 
     if (!(is >> m) || (m != "P3" && m != "P6"))
-        return std::unexpected(PPM::Error{"Invalid magic number from input"});
+        return std::unexpected(PPM::Error{"Invalid magic number"});
 
     if (!(is >> w) || w > PPM::MAX_WIDTH)
-        return std::unexpected(PPM::Error{"Invalid width from input"});
+        return std::unexpected(PPM::Error{"Width is invalid or out of range"});
 
     if (!(is >> h) || h > PPM::MAX_HEIGHT)
-        return std::unexpected(PPM::Error{"Invalid height from input"});
+        return std::unexpected(PPM::Error{"Height is invalid or out of range"});
 
     if (!(is >> max) || max > PPM::MAX_COLOR_VALUE)
-        return std::unexpected(PPM::Error{"Invalid max color val from input"});
+        return std::unexpected(PPM::Error{
+            "Max color value is invalid or out of range"
+        });
 
     /// Total per-pixel RGB color values
     const PPM::size_type samples = w * h * 3;
@@ -231,9 +233,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
             if (!(is >> v))
                 return std::unexpected(PPM::Error{"Unexpected EOF in P3 data"});
             if (v > max)
-                return std::unexpected(PPM::Error{
-                    "P3 color value out of range"
-                });
+                return std::unexpected(PPM::Error{"Color value out of range"});
             img.push_back(static_cast<PPM::data_type>(v));
         }
 
@@ -248,7 +248,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
         for (PPM::size_type i{}; i < samples; ++i) {
            std::uint8_t b = 0;
             if (!is.read(reinterpret_cast<char*>(&b), 1))
-                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (8-bit)"});
+                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data"});
             img.push_back(static_cast<PPM::data_type>(b));
         }
     } 
@@ -260,7 +260,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
             std::uint8_t lo = 0;
             if (!is.read(reinterpret_cast<char*>(&hi), 1) ||
                 !is.read(reinterpret_cast<char*>(&lo), 1))
-                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data (16-bit)"});
+                return std::unexpected(PPM::Error{"Unexpected EOF in P6 data"});
 
             /// Holds current pixel RGB value
             std::uint16_t v =
@@ -268,7 +268,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
                 static_cast<std::uint16_t>(lo);
 
             if (v > max)
-                return std::unexpected(PPM::Error{"P6 color value out of range"});
+                return std::unexpected(PPM::Error{"Color value out of range"});
 
             img.push_back(static_cast<PPM::data_type>(v));
         }
