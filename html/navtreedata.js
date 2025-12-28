@@ -29,8 +29,7 @@ var NAVTREE =
       [ "Overview", "md_README.html#autotoc_md1", null ],
       [ "Features", "md_README.html#autotoc_md2", null ],
       [ "Build", "md_README.html#autotoc_md3", null ],
-      [ "Usage", "md_README.html#autotoc_md4", null ],
-      [ "Notes", "md_README.html#autotoc_md5", null ]
+      [ "Usage", "md_README.html#autotoc_md4", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

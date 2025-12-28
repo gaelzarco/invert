@@ -255,46 +255,45 @@ $(function(){initNavTree('PPM_8hpp_source.html','',''); });
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordflow">return</span> img;</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    }</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="comment">// Ignore any whitespace after max before binary data begins</span></div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    is.ignore(255, <span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (max &lt;= 255) {</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="comment">// 8-bit samples</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classPPM.html#a32fa719ad47399477c29b21f30075778">PPM::size_type</a> i{}; i &lt; samples; ++i) {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>           std::uint8_t b = 0;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keywordflow">if</span> (!is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;b), 1))</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Unexpected EOF in P6 data&quot;</span>});</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            img.<a class="code hl_function" href="classPPM.html#a87129ec29275edd52295304e67e29eba">push_back</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="classPPM.html#a0928ed55aba778149969b9ad9ea92410">PPM::data_type</a><span class="keyword">&gt;</span>(b));</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        }</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    } </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordflow">if</span> (max &gt; 255) {</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="comment">// 16-bit samples</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classPPM.html#a32fa719ad47399477c29b21f30075778">PPM::size_type</a> i{}; i &lt; samples; ++i) {</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            std::uint8_t hi = 0;</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            std::uint8_t lo = 0;</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordflow">if</span> (!is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;hi), 1) ||</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                !is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;lo), 1))</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Unexpected EOF in P6 data&quot;</span>});</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            std::uint16_t v =</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                (<span class="keyword">static_cast&lt;</span>std::uint16_t<span class="keyword">&gt;</span>(hi) &lt;&lt; 8) |</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                <span class="keyword">static_cast&lt;</span>std::uint16_t<span class="keyword">&gt;</span>(lo);</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">if</span> (v &gt; max)</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Color value out of range&quot;</span>});</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            img.<a class="code hl_function" href="classPPM.html#a87129ec29275edd52295304e67e29eba">push_back</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="classPPM.html#a0928ed55aba778149969b9ad9ea92410">PPM::data_type</a><span class="keyword">&gt;</span>(v));</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        }</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordflow">return</span> img;</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>}           <span class="comment">// read_ppm</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    is.ignore(255, <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordflow">if</span> (max &lt;= 255) {</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="comment">// 8-bit samples</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classPPM.html#a32fa719ad47399477c29b21f30075778">PPM::size_type</a> i{}; i &lt; samples; ++i) {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>           std::uint8_t b = 0;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            <span class="keywordflow">if</span> (!is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;b), 1))</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Unexpected EOF in P6 data&quot;</span>});</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            img.<a class="code hl_function" href="classPPM.html#a87129ec29275edd52295304e67e29eba">push_back</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="classPPM.html#a0928ed55aba778149969b9ad9ea92410">PPM::data_type</a><span class="keyword">&gt;</span>(b));</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        }</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    } </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordflow">if</span> (max &gt; 255) {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment">// 16-bit samples</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classPPM.html#a32fa719ad47399477c29b21f30075778">PPM::size_type</a> i{}; i &lt; samples; ++i) {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            std::uint8_t hi = 0;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            std::uint8_t lo = 0;</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            <span class="keywordflow">if</span> (!is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;hi), 1) ||</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>                !is.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;lo), 1))</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Unexpected EOF in P6 data&quot;</span>});</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            std::uint16_t v =</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                (<span class="keyword">static_cast&lt;</span>std::uint16_t<span class="keyword">&gt;</span>(hi) &lt;&lt; 8) |</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                <span class="keyword">static_cast&lt;</span>std::uint16_t<span class="keyword">&gt;</span>(lo);</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="keywordflow">if</span> (v &gt; max)</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                <span class="keywordflow">return</span> std::unexpected(<a class="code hl_struct" href="structPPM_1_1Error.html">PPM::Error</a>{<span class="stringliteral">&quot;Color value out of range&quot;</span>});</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            img.<a class="code hl_function" href="classPPM.html#a87129ec29275edd52295304e67e29eba">push_back</a>(<span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="classPPM.html#a0928ed55aba778149969b9ad9ea92410">PPM::data_type</a><span class="keyword">&gt;</span>(v));</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        }</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">return</span> img;</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>}           <span class="comment">// read_ppm</span></div>
 </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="preprocessor">#endif      </span><span class="comment">// PPM_HPP</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="comment">// EOF PPM.hpp</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span><span class="preprocessor">#endif      </span><span class="comment">// PPM_HPP</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="comment">// EOF PPM.hpp</span></div>
 <div class="ttc" id="aPPM_8hpp_html_a1ed2539fca8184b1524d212c7e0e06f3"><div class="ttname"><a href="PPM_8hpp.html#a1ed2539fca8184b1524d212c7e0e06f3">read_ppm</a></div><div class="ttdeci">std::expected&lt; PPM, PPM::Error &gt; read_ppm(std::istream &amp;is)</div><div class="ttdef"><b>Definition</b> PPM.hpp:200</div></div>
 <div class="ttc" id="aclassPPM_html_a002d6a0b43d6957fdd127e98b1662d9e"><div class="ttname"><a href="classPPM.html#a002d6a0b43d6957fdd127e98b1662d9e">PPM::const_pointer</a></div><div class="ttdeci">const data_type * const_pointer</div><div class="ttdoc">Data type pointer.</div><div class="ttdef"><b>Definition</b> PPM.hpp:31</div></div>
 <div class="ttc" id="aclassPPM_html_a06533c2b5b323c6ba21c687d5d471477"><div class="ttname"><a href="classPPM.html#a06533c2b5b323c6ba21c687d5d471477">PPM::set_height</a></div><div class="ttdeci">void set_height(size_type value) noexcept</div><div class="ttdoc">Sets image height.</div><div class="ttdef"><b>Definition</b> PPM.hpp:64</div></div>

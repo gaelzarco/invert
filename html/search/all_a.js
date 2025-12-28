@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['p3_0',['P3',['../classPPM.html#a860897233dbad8ec41fc482cbfa1f9c3abd11537f1bc31e334497ec5463fc575e',1,'PPM']]],
-  ['p6_1',['P6',['../classPPM.html#a860897233dbad8ec41fc482cbfa1f9c3a53453c482d4d75c2fcc000cda7f2dd81',1,'PPM']]],
-  ['pointer_2',['pointer',['../classPPM.html#aec2a8f230fffba16e6da494c97d7cd72',1,'PPM']]],
-  ['ppm_3',['PPM',['../classPPM.html',1,'PPM'],['../classPPM.html#a4e4ed28b3e4f4bc48eb8bdf80b896c19',1,'PPM::PPM()']]],
-  ['ppm_20inverter_20inverter_20cxx_4',['PPM Inverter (inverter.cxx)',['../md_README.html',1,'']]],
-  ['ppm_2ehpp_5',['PPM.hpp',['../PPM_8hpp.html',1,'']]],
-  ['push_5fback_6',['push_back',['../classPPM.html#a87129ec29275edd52295304e67e29eba',1,'PPM']]]
+  ['read_5fppm_0',['read_ppm',['../classPPM.html#a1ed2539fca8184b1524d212c7e0e06f3',1,'PPM::read_ppm()'],['../PPM_8hpp.html#a1ed2539fca8184b1524d212c7e0e06f3',1,'read_ppm(std::istream &amp;is):&#160;PPM.hpp']]],
+  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]],
+  ['reference_2',['reference',['../classPPM.html#a57b4e1f98b6a091f56313cc4daa1f64e',1,'PPM']]]
 ];

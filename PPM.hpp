@@ -41,7 +41,7 @@ public:
      * @param     w Width
      * @param     h Height
      * @param     d Pixel color values vector
-     * @exception std::runtime_error If magic num is not P3 or P6
+     * @exception std::invalid_argument If magic num is not P3 or P6
      * @exception std::overflow_error If w, h, or max are too large
      */
     explicit PPM(MagicNum m = MagicNum::P3, size_type w = 0, size_type h = 0,
@@ -240,7 +240,6 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
         return img;
     }
 
-    // Ignore any whitespace after max before binary data begins
     is.ignore(255, '\n');
 
     if (max <= 255) {
@@ -251,7 +250,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
                 return std::unexpected(PPM::Error{"Unexpected EOF in P6 data"});
             img.push_back(static_cast<PPM::data_type>(b));
         }
-    } 
+    }
 
     if (max > 255) {
         // 16-bit samples

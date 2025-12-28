@@ -8,24 +8,12 @@
 \begin{DoxyItemize}
 \item Supports \doxylink{classPPM}{PPM} magic numbers {\ttfamily P3} (ASCII) and {\ttfamily P6} (binary)
 \item Enforces limits on width, height, and maximum color value
-\item Stream extraction operator ({\ttfamily operator\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}}) for loading \doxylink{classPPM}{PPM} data
-\item Outputs image metadata and pixel values line by line
+\item Outputs image metadata and pixel values
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Build}{Build}}\label{md_README_autotoc_md3}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{g++\ -\/std=c++17\ -\/O2\ -\/Wall\ -\/Wextra\ -\/pedantic\ inverter.cxx\ -\/o\ inverter}
+\DoxyCodeLine{g++\ -\/std=c++23\ -\/O2\ -\/Wall\ -\/Wextra\ -\/pedantic\ inverter.cxx\ -\/o\ inverter}
 
 \end{DoxyCode}
 \hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md4}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{./inverter\ <\ input.ppm\ >\ output.txt}
-
-\end{DoxyCode}
-\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{Notes}{Notes}}\label{md_README_autotoc_md5}
-
-\begin{DoxyItemize}
-\item The program currently does not perform color inversion despite the filename.
-\item Binary {\ttfamily P6} data is not correctly handled due to formatted stream extraction.
-\item The magic number is printed as an enum value, not as {\ttfamily P3} or {\ttfamily P6}.-\/ The magic number is printed as an enum value, not as {\ttfamily P3} or {\ttfamily P6}.\# \doxylink{classPPM}{PPM} Inverter (\doxylink{inverter_8cxx}{inverter.\+cxx}) 
-\end{DoxyItemize}
+\`{}\`{}\`{}cpp ./inverter \texorpdfstring{$<$}{<} cat.\+ppm \texorpdfstring{$>$}{>} out.\+ppm 

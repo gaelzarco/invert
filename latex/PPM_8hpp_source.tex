@@ -158,44 +158,43 @@
 \DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ img;}
 \DoxyCodeLine{00241\ \ \ \ \ \}}
 \DoxyCodeLine{00242\ }
-\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//\ Ignore\ any\ whitespace\ after\ max\ before\ binary\ data\ begins}}
-\DoxyCodeLine{00244\ \ \ \ \ is.ignore(255,\ \textcolor{charliteral}{'\(\backslash\)n'});}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ <=\ 255)\ \{}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 8-\/bit\ samples}}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ b\ =\ 0;}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&b),\ 1))}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(b));}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00254\ \ \ \ \ \}\ }
-\DoxyCodeLine{00255\ }
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ 255)\ \{}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 16-\/bit\ samples}}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
-\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ hi\ =\ 0;}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ lo\ =\ 0;}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&hi),\ 1)\ ||}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&lo),\ 1))}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint16\_t\ v\ =}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(hi)\ <<\ 8)\ |}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(lo);}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ >\ max)}
-\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Color\ value\ out\ of\ range"{}}\});}
-\DoxyCodeLine{00272\ }
-\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(v));}
-\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00275\ \ \ \ \ \}}
-\DoxyCodeLine{00276\ }
-\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{return}\ img;}
-\DoxyCodeLine{00278\ \}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\_ppm}}
-\DoxyCodeLine{00279\ }
-\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ }\textcolor{comment}{//\ PPM\_HPP}}
-\DoxyCodeLine{00281\ }
-\DoxyCodeLine{00282\ \textcolor{comment}{//\ EOF\ PPM.hpp}}
+\DoxyCodeLine{00243\ \ \ \ \ is.ignore(255,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ <=\ 255)\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 8-\/bit\ samples}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ b\ =\ 0;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&b),\ 1))}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(b));}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \ \ \ \ \}\ }
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ >\ 255)\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 16-\/bit\ samples}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{PPM::size\_type}}\ i\{\};\ i\ <\ samples;\ ++i)\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ hi\ =\ 0;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint8\_t\ lo\ =\ 0;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&hi),\ 1)\ ||}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !is.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&lo),\ 1))}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Unexpected\ EOF\ in\ P6\ data"{}}\});}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ std::uint16\_t\ v\ =}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(hi)\ <<\ 8)\ |}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(lo);}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v\ >\ max)}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::unexpected(\mbox{\hyperlink{structPPM_1_1Error}{PPM::Error}}\{\textcolor{stringliteral}{"{}Color\ value\ out\ of\ range"{}}\});}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ img.\mbox{\hyperlink{classPPM_a87129ec29275edd52295304e67e29eba}{push\_back}}(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{PPM::data\_type}}\textcolor{keyword}{>}(v));}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \}}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keywordflow}{return}\ img;}
+\DoxyCodeLine{00277\ \}\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\_ppm}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ }\textcolor{comment}{//\ PPM\_HPP}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \textcolor{comment}{//\ EOF\ PPM.hpp}}
 
 \end{DoxyCode}

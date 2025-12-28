@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['read_5fppm_0',['read_ppm',['../classPPM.html#a1ed2539fca8184b1524d212c7e0e06f3',1,'PPM::read_ppm()'],['../PPM_8hpp.html#a1ed2539fca8184b1524d212c7e0e06f3',1,'read_ppm(std::istream &amp;is):&#160;PPM.hpp']]],
-  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]],
-  ['reference_2',['reference',['../classPPM.html#a57b4e1f98b6a091f56313cc4daa1f64e',1,'PPM']]]
+  ['set_5fheight_0',['set_height',['../classPPM.html#a06533c2b5b323c6ba21c687d5d471477',1,'PPM']]],
+  ['set_5fmagic_5fnum_1',['set_magic_num',['../classPPM.html#a1b5e9b60db2e8960614d5b74ea60995d',1,'PPM']]],
+  ['set_5fmax_2',['set_max',['../classPPM.html#ae537b57a4e49e69f36a3af70a86c6282',1,'PPM']]],
+  ['set_5fwidth_3',['set_width',['../classPPM.html#a7e98b083af0e58fa945ac325fe323d71',1,'PPM']]],
+  ['size_5ftype_4',['size_type',['../classPPM.html#a32fa719ad47399477c29b21f30075778',1,'PPM']]]
 ];

@@ -100,22 +100,14 @@ Features</h1>
 <ul>
 <li>Supports <a class="el" href="classPPM.html" title="PPM image.">PPM</a> magic numbers <span class="tt">P3</span> (ASCII) and <span class="tt">P6</span> (binary)</li>
 <li>Enforces limits on width, height, and maximum color value</li>
-<li>Stream extraction operator (<span class="tt">operator&gt;&gt;</span>) for loading <a class="el" href="classPPM.html" title="PPM image.">PPM</a> data</li>
-<li>Outputs image metadata and pixel values line by line</li>
+<li>Outputs image metadata and pixel values</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Build</h1>
-<div class="fragment"><div class="line">g++ -std=c++17 -O2 -Wall -Wextra -pedantic inverter.cxx -o inverter</div>
+<div class="fragment"><div class="line">g++ -std=c++23 -O2 -Wall -Wextra -pedantic inverter.cxx -o inverter</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
-<div class="fragment"><div class="line">./inverter &lt; input.ppm &gt; output.txt</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Notes</h1>
-<ul>
-<li>The program currently does not perform color inversion despite the filename.</li>
-<li>Binary <span class="tt">P6</span> data is not correctly handled due to formatted stream extraction.</li>
-<li>The magic number is printed as an enum value, not as <span class="tt">P3</span> or <span class="tt">P6</span>.- The magic number is printed as an enum value, not as <span class="tt">P3</span> or <span class="tt">P6</span>.# <a class="el" href="classPPM.html" title="PPM image.">PPM</a> Inverter (<a class="el" href="inverter_8cxx.html" title="Inverts colors from .ppm images.">inverter.cxx</a>) </li>
-</ul>
+<p>```cpp ./inverter &lt; cat.ppm &gt; out.ppm </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
