@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: PPM Inverter (inverter.cxx)</title>
+<title>PPM Image Inverter: PPM Inverter (inverter.cxx)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,8 +26,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">PPM Image Inverter
    </div>
+   <div id="projectbrief">Inverts colors on PPM images (P3 and P6)</div>
   </td>
  </tr>
  </tbody>
@@ -94,7 +95,7 @@ $(function(){initNavTree('md_README.html','',''); });
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
-<p><span class="tt"><a class="el" href="inverter_8cxx.html" title="Inverts colors from .ppm images.">inverter.cxx</a></span> defines a small C++ program and a <span class="tt"><a class="el" href="classPPM.html" title="PPM image.">PPM</a></span> image container for reading <a class="el" href="classPPM.html" title="PPM image.">PPM</a> images (<span class="tt">P3</span> or <span class="tt">P6</span>) from standard input and printing the parsed header and pixel values to standard output. The code enforces bounds on image dimensions and color depth.</p>
+<p><span class="tt">inverter.cxx</span> defines a small C++ program and a <span class="tt"><a class="el" href="classPPM.html" title="PPM image.">PPM</a></span> image container for reading <a class="el" href="classPPM.html" title="PPM image.">PPM</a> images (<span class="tt">P3</span> or <span class="tt">P6</span>) from standard input and printing the parsed header and pixel values to standard output. The code enforces bounds on image dimensions and color depth.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <ul>
@@ -104,11 +105,16 @@ Features</h1>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Build</h1>
-<div class="fragment"><div class="line">g++ -std=c++23 -O2 -Wall -Wextra -pedantic inverter.cxx -o inverter</div>
+<div class="fragment"><div class="line">make</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Clean</h1>
+<div class="fragment"><div class="line">make clean</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Usage</h1>
-<p>```cpp ./inverter &lt; cat.ppm &gt; out.ppm </p>
-</div></div><!-- contents -->
+<div class="fragment"><div class="line">./build/inverter &lt; ./assets/cat.ppm &gt; ./assets/out.ppm</div>
+<div class="line">display ./assets/out,<a class="code" href="module__ppm.html">ppm</a>    <span class="comment">// LINUX</span></div>
+<div class="ttc" id="amodule__ppm_html"><div class="ttname"><a href="module__ppm.html">ppm</a></div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

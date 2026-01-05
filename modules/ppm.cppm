@@ -4,21 +4,21 @@
  * @brief  PPM image ADT with implementations
  */
 
-#ifndef PPM_HPP
-#define PPM_HPP
+module;
 
-#include <cstdint>      // uint8_t, uint16_t
-#include <cstddef>      // size_t
-#include <vector>
-#include <string>
 #include <cassert>
-#include <stdexcept>
+#include <cstdint>
 #include <expected>
-#include <print>
-#include <iostream>
+#include <istream>
+#include <ostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+export module ppm;
 
 /// @brief PPM image
-class PPM {
+export class PPM {
 public:
     static constexpr std::size_t MAX_WIDTH       = 1920;
     static constexpr std::size_t MAX_HEIGHT      = 1080;
@@ -197,7 +197,7 @@ void PPM::out_ppm(std::ostream& os) const {
     }
 }           // out_ppm
 
-std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
+export std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     std::string m{};                /// Holds magic num from is
     PPM::size_type w{};             /// Holds width from is
     PPM::size_type h{};             /// Holds height from is
@@ -227,7 +227,7 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
     img.clear();
 
     if (m != "P6") {
-        int v;                      /// Holds current pixel RGB value
+        PPM::size_type v;           /// Holds current pixel RGB value
 
         for (PPM::size_type i{}; i < samples; ++i) {
             if (!(is >> v))
@@ -275,7 +275,5 @@ std::expected<PPM, PPM::Error> read_ppm(std::istream& is) {
 
     return img;
 }           // read_ppm
-
-#endif      // PPM_HPP
 
 // EOF PPM.hpp

@@ -1,0 +1,56 @@
+\doxysection{modules/ppm.cppm File Reference}
+\hypertarget{ppm_8cppm}{}\label{ppm_8cppm}\index{modules/ppm.cppm@{modules/ppm.cppm}}
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$expected$>$}\newline
+{\ttfamily \#include $<$istream$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPPM}{PPM}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classPPM}{PPM} image. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}}
+\begin{DoxyCompactList}\small\item\em Const data type pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ \mbox{\hyperlink{ppm_8cppm_a1ed2539fca8184b1524d212c7e0e06f3}{read\+\_\+ppm}} (std\+::istream \&is)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{ppm_8cppm_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ppm_8cppm_a1ed2539fca8184b1524d212c7e0e06f3}\index{ppm.cppm@{ppm.cppm}!read\_ppm@{read\_ppm}}
+\index{read\_ppm@{read\_ppm}!ppm.cppm@{ppm.cppm}}
+\doxysubsubsection{\texorpdfstring{read\_ppm()}{read\_ppm()}}
+{\footnotesize\ttfamily \label{ppm_8cppm_a1ed2539fca8184b1524d212c7e0e06f3} 
+std\+::expected$<$ \mbox{\hyperlink{classPPM}{PPM}}, \mbox{\hyperlink{structPPM_1_1Error}{PPM\+::\+Error}} $>$ read\+\_\+ppm (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [export]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Input stream reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+expected value of \doxylink{classPPM}{PPM} or \doxylink{structPPM_1_1Error}{PPM\+::\+Error} 
+\end{DoxyReturn}
+Holds magic num from is
+
+Holds width from is
+
+Holds height from is
+
+Holds max color value from is
+
+Total per-\/pixel RGB color values
+
+Holds image
+
+Holds current pixel RGB value
+
+Holds current pixel RGB value

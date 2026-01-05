@@ -4,9 +4,11 @@
  * @brief  Inverts colors from .ppm images
  */
 
-#include "PPM.hpp"
-#include <expected>
+#include <iostream>
 #include <print>
+#include <expected>
+
+import ppm;
 
 // -----------------------------------------------------------------------------
 // MAIN

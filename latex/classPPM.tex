@@ -5,10 +5,6 @@
 \doxylink{classPPM}{PPM} image.  
 
 
-
-
-{\ttfamily \#include $<$PPM.\+hpp$>$}
-
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -77,6 +73,19 @@ static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classPPM_a9c92abcbba1e59d3d
 \item 
 static constexpr std\+::size\+\_\+t \mbox{\hyperlink{classPPM_adb24360991193de8fab0fc436e41ac6b}{MAX\+\_\+\+COLOR\+\_\+\+VALUE}} = 65\textquotesingle{}536
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} \mbox{\hyperlink{classPPM_a655f5d99819e7cec3153b59f7e7f1fd6}{m\+\_\+magic}}
+\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_a6e677a6408f8a0b6096d9029351743a3}{m\+\_\+width}}
+\begin{DoxyCompactList}\small\item\em Magic num. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_af9aaf24ff1c8fe2162407db5618de63c}{m\+\_\+height}}
+\begin{DoxyCompactList}\small\item\em Width. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} \mbox{\hyperlink{classPPM_a5875b7399adbc660f098c4491f31311c}{m\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em Height. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}} $>$ \mbox{\hyperlink{classPPM_a8049acc3fe9100972ff136a243126c0a}{m\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Max color value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -453,6 +462,52 @@ Holds current pixel RGB value
 \label{doc-variable-members}
 \Hypertarget{classPPM_doc-variable-members}
 \doxysubsection{Member Data Documentation}
+\Hypertarget{classPPM_a8049acc3fe9100972ff136a243126c0a}\index{PPM@{PPM}!m\_data@{m\_data}}
+\index{m\_data@{m\_data}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{m\_data}{m\_data}}
+{\footnotesize\ttfamily \label{classPPM_a8049acc3fe9100972ff136a243126c0a} 
+std\+::vector$<$\mbox{\hyperlink{classPPM_a0928ed55aba778149969b9ad9ea92410}{data\+\_\+type}}$>$ PPM\+::m\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Max color value. 
+
+\Hypertarget{classPPM_af9aaf24ff1c8fe2162407db5618de63c}\index{PPM@{PPM}!m\_height@{m\_height}}
+\index{m\_height@{m\_height}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{m\_height}{m\_height}}
+{\footnotesize\ttfamily \label{classPPM_af9aaf24ff1c8fe2162407db5618de63c} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::m\+\_\+height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Width. 
+
+\Hypertarget{classPPM_a655f5d99819e7cec3153b59f7e7f1fd6}\index{PPM@{PPM}!m\_magic@{m\_magic}}
+\index{m\_magic@{m\_magic}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{m\_magic}{m\_magic}}
+{\footnotesize\ttfamily \label{classPPM_a655f5d99819e7cec3153b59f7e7f1fd6} 
+\mbox{\hyperlink{classPPM_a860897233dbad8ec41fc482cbfa1f9c3}{Magic\+Num}} PPM\+::m\+\_\+magic\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classPPM_a5875b7399adbc660f098c4491f31311c}\index{PPM@{PPM}!m\_max@{m\_max}}
+\index{m\_max@{m\_max}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{m\_max}{m\_max}}
+{\footnotesize\ttfamily \label{classPPM_a5875b7399adbc660f098c4491f31311c} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::m\+\_\+max\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Height. 
+
+\Hypertarget{classPPM_a6e677a6408f8a0b6096d9029351743a3}\index{PPM@{PPM}!m\_width@{m\_width}}
+\index{m\_width@{m\_width}!PPM@{PPM}}
+\doxysubsubsection{\texorpdfstring{m\_width}{m\_width}}
+{\footnotesize\ttfamily \label{classPPM_a6e677a6408f8a0b6096d9029351743a3} 
+\mbox{\hyperlink{classPPM_a32fa719ad47399477c29b21f30075778}{size\+\_\+type}} PPM\+::m\+\_\+width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Magic num. 
+
 \Hypertarget{classPPM_adb24360991193de8fab0fc436e41ac6b}\index{PPM@{PPM}!MAX\_COLOR\_VALUE@{MAX\_COLOR\_VALUE}}
 \index{MAX\_COLOR\_VALUE@{MAX\_COLOR\_VALUE}!PPM@{PPM}}
 \doxysubsubsection{\texorpdfstring{MAX\_COLOR\_VALUE}{MAX\_COLOR\_VALUE}}
@@ -475,4 +530,4 @@ std\+::size\+\_\+t PPM\+::\+MAX\+\_\+\+WIDTH = 1920\hspace{0.3cm}{\ttfamily [sta
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{PPM_8hpp}{PPM.\+hpp}}\end{DoxyCompactItemize}
+modules/\mbox{\hyperlink{ppm_8cppm}{ppm.\+cppm}}\end{DoxyCompactItemize}

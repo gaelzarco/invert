@@ -13,9 +13,16 @@ dimensions and color depth.
 
 ## Build
 ```cpp
-g++ -std=c++23 -O2 -Wall -Wextra -pedantic inverter.cxx -o inverter
+make
+```
+
+## Clean
+```cpp
+make clean
 ```
 
 ## Usage
 ```cpp
-./inverter < cat.ppm > out.ppm
+./build/inverter < ./assets/cat.ppm > ./assets/out.ppm
+display ./assets/out,ppm    // LINUX
+```

@@ -24,12 +24,20 @@
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
+  [ "PPM Image Inverter", "index.html", [
     [ "PPM Inverter (inverter.cxx)", "md_README.html", [
       [ "Overview", "md_README.html#autotoc_md1", null ],
       [ "Features", "md_README.html#autotoc_md2", null ],
       [ "Build", "md_README.html#autotoc_md3", null ],
-      [ "Usage", "md_README.html#autotoc_md4", null ]
+      [ "Clean", "md_README.html#autotoc_md4", null ],
+      [ "Usage", "md_README.html#autotoc_md5", null ]
+    ] ],
+    [ "Modules", "modules.html", [
+      [ "Modules List", "modules.html", "modules_dup" ],
+      [ "Module Members", "modulemembers.html", [
+        [ "All", "modulemembers.html", null ],
+        [ "Functions", "modulemembers_func.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -55,7 +63,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"PPM_8hpp.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

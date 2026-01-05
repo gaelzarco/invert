@@ -27,5 +27,10 @@ var classPPM =
     [ "set_magic_num", "classPPM.html#a1b5e9b60db2e8960614d5b74ea60995d", null ],
     [ "set_max", "classPPM.html#ae537b57a4e49e69f36a3af70a86c6282", null ],
     [ "set_width", "classPPM.html#a7e98b083af0e58fa945ac325fe323d71", null ],
-    [ "read_ppm", "classPPM.html#a1ed2539fca8184b1524d212c7e0e06f3", null ]
+    [ "read_ppm", "classPPM.html#a1ed2539fca8184b1524d212c7e0e06f3", null ],
+    [ "m_data", "classPPM.html#a8049acc3fe9100972ff136a243126c0a", null ],
+    [ "m_height", "classPPM.html#af9aaf24ff1c8fe2162407db5618de63c", null ],
+    [ "m_magic", "classPPM.html#a655f5d99819e7cec3153b59f7e7f1fd6", null ],
+    [ "m_max", "classPPM.html#a5875b7399adbc660f098c4491f31311c", null ],
+    [ "m_width", "classPPM.html#a6e677a6408f8a0b6096d9029351743a3", null ]
 ];

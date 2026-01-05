@@ -3,7 +3,7 @@
 \label{md_README_autotoc_md0}%
 \Hypertarget{md_README_autotoc_md0}%
 \hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md_README_autotoc_md1}
-{\ttfamily \doxylink{inverter_8cxx}{inverter.\+cxx}} defines a small C++ program and a {\ttfamily \doxylink{classPPM}{PPM}} image container for reading \doxylink{classPPM}{PPM} images ({\ttfamily P3} or {\ttfamily P6}) from standard input and printing the parsed header and pixel values to standard output. The code enforces bounds on image dimensions and color depth.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md_README_autotoc_md2}
+{\ttfamily inverter.\+cxx} defines a small C++ program and a {\ttfamily \doxylink{classPPM}{PPM}} image container for reading \doxylink{classPPM}{PPM} images ({\ttfamily P3} or {\ttfamily P6}) from standard input and printing the parsed header and pixel values to standard output. The code enforces bounds on image dimensions and color depth.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md_README_autotoc_md2}
 
 \begin{DoxyItemize}
 \item Supports \doxylink{classPPM}{PPM} magic numbers {\ttfamily P3} (ASCII) and {\ttfamily P6} (binary)
@@ -12,8 +12,20 @@
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Build}{Build}}\label{md_README_autotoc_md3}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{g++\ -\/std=c++23\ -\/O2\ -\/Wall\ -\/Wextra\ -\/pedantic\ inverter.cxx\ -\/o\ inverter}
+\DoxyCodeLine{make}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md4}
-\`{}\`{}\`{}cpp ./inverter \texorpdfstring{$<$}{<} cat.\+ppm \texorpdfstring{$>$}{>} out.\+ppm 
+\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Clean}{Clean}}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./build/inverter\ <\ ./assets/cat.ppm\ >\ ./assets/out.ppm}
+\DoxyCodeLine{display\ ./assets/out,\mbox{\hyperlink{module__ppm}{ppm}}\ \ \ \ \textcolor{comment}{//\ LINUX}}
+
+\end{DoxyCode}
+ 
